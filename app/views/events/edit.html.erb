@@ -1,0 +1,17 @@
+<div class="col-md6 col-md-offset-3">
+  <div class="edit-event-form">
+
+<h1>Edit Event</h1>
+
+<%= simple_form_for @event, :html => { :multipart => true } do |f| %>
+<%= f.select :category_id, @categories %>
+<%= f.file_field :event_img %>
+<%= f.input :title, label: "Event Title" %>
+<%= f.input :lokasi %>
+<%= f.input :jenis %>
+<%= f.input :deskripsi %>
+<%= f.button :submit, :class => "btn-custom2" %>
+<% end %>
+
+</div>
+</div>

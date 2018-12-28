@@ -1,0 +1,12 @@
+<div class="review-ratting" data-score="<%= review.ratting %>"></div>
+<p><%= review.comment %></p>
+
+<% if user_signed_in? %>
+
+<% if review.user_id == current_user.id %>
+
+<%= link_to "Edit", edit_event_review_path(review.event, review) %>
+<%= link_to "Delete", event_review_path(review.event, review), method: :delete, data: {confirm: "Anda yakin?" } %>
+
+<% end %>
+<% end %>

@@ -1,0 +1,36 @@
+<%= render 'navi' %>
+
+<div class="container">
+  <div class="row">
+    <%= link_to 'Tambah Data', new_profile_path, class: 'btn btn-default' %>
+    <p></p>
+    <table class="table table-bordered table-hover table-responsive">
+      <thead>
+      <tr>
+        <th class="text-center">Id profile</th>
+        <th class="text-center">Judul profile</th>
+        <th class="text-center">Nama Pengarang</th>
+        <th class="text-center">Penerbit</th>
+        <th class="text-center">Tahun Terbit</th>
+        <th class="text-center">Aksi</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @profiles.each do |profile| %>
+          <tr>
+            <td><%= profile.idprofile %></td>
+            <td><%= profile.judulprofile %></td>
+            <td><%= profile.namaPengarang %></td>
+            <td><%= profile.penerbit %></td>
+            <td><%= profile.tahunTerbit %></td>
+            <td class="text-center">
+              <%= link_to 'Detail', profile_path(profile), class: 'btn btn-default' %>
+              <%= link_to 'Edit', edit_profile_path(profile), class: 'btn btn-success' %>
+              <%= link_to 'Delete',profile_path(profile), method: :delete, data: {confirm: 'Data Dihapus ? '}, class: 'btn btn-danger' %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

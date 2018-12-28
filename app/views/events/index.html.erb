@@ -1,0 +1,23 @@
+<h1 class="current-category"><%= params[:category] %></h1>
+
+<% if @events.count == 0 %>
+
+  <h1 class="text-center">Event Yang Anda Cari Tidak Terdaftar :)</h1>
+
+<% else %>
+
+  <div class="row">
+
+    <% @events.each do |event| %>
+      <div class="col-md-3">
+
+        <a href="/events/<%= event.id %>">
+          <h3 class="btn btn-success text-center"><%= event.title %></h3>
+          <%= image_tag event.event_img.url(:event_index), class: "event"%>
+
+
+        </a>
+      </div>
+    <% end %>
+  </div>
+<% end %>

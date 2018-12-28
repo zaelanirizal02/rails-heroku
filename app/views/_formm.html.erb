@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <%= formm_for(@profile) do |profile| %>
+
+        <div class="form-group">
+          <%= profile.label :ID_Profile %>
+          <%= profile.text_field :idProfile, class:'form-control', type: 'text', placeholder: 'ID Profile' %>
+        </div>
+
+        <div class="form-group">
+          <%= profile.label :Judul_Profile %>
+          <%= profile.text_field :judulProfile, class:'form-control', type: 'text', placeholder: 'Judul Profile' %>
+        </div>
+
+        <div class="form-group">
+          <%= profile.label :Nama_Pengarang %>
+          <%= profile.text_field :namaPengarang, class:'form-control', type: 'text', placeholder: 'Nama Pengarang' %>
+        </div>
+
+        <div class="form-group">
+          <%= profile.label :Penerbit %>
+          <%= profile.text_field :penerbit, class:'form-control', type: 'text', placeholder: 'Penerbit' %>
+        </div>
+
+        <div class="form-group">
+          <%= profile.label :Tahun_Terbit %>
+          <%= profile.text_field :tahunTerbit, class:'form-control', type: 'number', placeholder: 'Tahun Terbit' %>
+        </div>
+
+        <%= profile.submit :Save, class:'btn btn-success' %>
+
+    <% end %>
+  </div>
+</div>

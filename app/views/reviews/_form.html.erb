@@ -1,0 +1,15 @@
+<%= simple_form_for([@event, @event.reviews.build]) do |f| %>
+<div id="ratting-form">
+<label>Beri Kami Rating</label>
+</div>
+
+
+<%= f.input :comment %>
+<%= f.button :submit, :class => "btn-custom2" %>
+<% end %>
+<script>
+  $('#ratting-form').raty({
+    path: '/assets',
+    scoreName: 'review[ratting]'
+  });
+</script>

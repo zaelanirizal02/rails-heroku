@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Eventday</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style media="screen">
+      .icon-soc{
+        width: 50px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+
+
+    <nav class="navbar navbar-default">
+
+      <div class="container">
+
+        <div class="navbar-header">
+          <%= link_to "EVENTDAY", root_path, class: "navbar-brand" %>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Sign Up", new_user_registration_path %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Log In", new_user_session_path %></li>
+            <li><%= link_to "Profile Saya", profile_index_path %></li>
+          <% end %>
+
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expended="false">Categories
+              <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <% Category.all.each do |category| %>
+
+                <li class="<%= 'active' if params[:category] == category.name %>">
+                  <%= link_to category.name, events_path(category: category.name), class: "link" %>
+                </li>
+              <% end %>
+
+            </ul>
+          </li>
+
+          <% if user_signed_in? %>
+            <li><%= link_to "Add Event", new_event_path %></li>
+          <% end %>
+
+        </ul>
+
+      </div>
+
+    </nav>
+
+
+
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+
+    <div class="container">
+
+      <%= yield %>
+    </div>
+
+   <!--FOTERRRRRRR-->
+   <footer style="background-color: #343a40 !important;padding:0px 0px;">
+     <div class="footer-socmed" style="margin:90px 0px">
+       <center>
+         <div class="icons">
+           <%= image_tag("facebook.png", :class => "icon-soc") %>
+           <%= image_tag("twitter.png", :class => "icon-soc") %>
+           <%= image_tag("yt.png", :class => "icon-soc") %>
+           <%= image_tag("ig.png", :class => "icon-soc") %>
+         </div>
+         <div class="footer-nav">
+           <strong style="color:white">HOME <span style="margin-left:12px">MENU <span style="margin-left:12px">STORY <span style="margin-left:12px">DETOX <span style="margin-left:12px">LOCATIONS </strong>
+             <br>
+             <p style="color:white">CONTACT | BLOCK | CATERING | DELIVERY</p>
+         </div>
+       </center>
+     </div>
+     <div class="footer-text" style="background-color: #28a745 !important;padding:20px 0px;">
+       <center>
+         <strong style="color:white">EVENTDAY</strong>
+           <br>
+           <p style="color:white">&copy Granada Project 2018 | All rights reserved.</p>
+       </center>
+     </div>
+
+   </footer>
+
+
+
+  </body>
+</html>
